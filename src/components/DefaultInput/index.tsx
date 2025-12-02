@@ -14,7 +14,7 @@ type DefaultInputProps = {
 // todas as outras propriedades do input, com isso podemos passar outras propriedades como 'placeholder', 'value', etc. 
 // Sem precisar declarar todas as propriedades do input novamente.
 
-export function DefaultInput({ id, type, labelText, placeholderOptional }: DefaultInputProps) {
+export function DefaultInput({ id, type, labelText, placeholderOptional, ...rest }: DefaultInputProps) {
     return (
         <>
             {/* Condição para  verificar se o labelText foi setado, caso não tenha sido setado, não adiciona nenhum label*/}
@@ -25,7 +25,7 @@ export function DefaultInput({ id, type, labelText, placeholderOptional }: Defau
             -----// CODE:  <label htmlFor={ id }>{labelText}</label>    END CODE \\---------*/}
 
             <label htmlFor={ id }>{labelText}</label>
-            <input className={styles.input} id={ id } type={ type } placeholder={placeholderOptional} />
+            <input className={styles.input} id={ id } type={ type } placeholder={placeholderOptional} {...rest}/>
 
             {/* <input id={ id } type={ type } {...rest}/>
              Adicionando o ...rest dentro das configurações do input, consigo dizer que quero ter todas as outras propriedades do input
